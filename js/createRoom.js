@@ -24,17 +24,21 @@ App.room = App.cable.subscriptions.create({channel: 'ChatRoomChannel', room_id: 
 
     sendMessage: function (message) {
         var sendMessageUrl = 'https://cnc-chat.herokuapp.com/chat_rooms/1/messages';
-        var params = {
-            message: {
-                sender: 'Vilberg',
-                body: message
-            }
-        };
 
-        App.requester.post(sendMessageUrl, params, function(response) {
-            if (response.status !== 200) {
-                console.log(response.responseText);
-            }
+        var promise = getCookie('nickname');
+        promise.then(function(nickname) {
+            var params = {
+                message: {
+                    sender: nickname,
+                    body: message
+                }
+            };
+
+            App.requester.post(sendMessageUrl, params, function(response) {
+                if (response.status !== 200) {
+                    console.log(response.responseText);
+                }
+            });
         });
     },
 
