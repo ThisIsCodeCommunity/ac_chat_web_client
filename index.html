@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>WebSocket Test</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-        <script src="https://unpkg.com/actioncable@5.1.4/lib/assets/compiled/action_cable.js"></script>
-    </head>
+<head>
+    <meta charset="utf-8"/>
+    <title>WebSocket Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://unpkg.com/actioncable@5.1.4/lib/assets/compiled/action_cable.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/muicss/0.9.36/css/mui.css"/>
+</head>
 
-    <body>
-        <h2>Message client</h2>
+<body>
+<div class="mui-appbar">
+    <div class="mui-row">
+        <div class="mui-col-md-8 mui-col-md-offset-2">
+            <h2>Message client</h2>
+        </div>
+    </div>
+</div>
 
-        <div id="output"></div>
+<div class="mui-container-fluid">
+    <div class="mui-row">
+        <div class="mui-col-md-8 mui-col-md-offset-2">
+            <div id="output"></div>
 
-        <form>
-            <label for="message">Your message:</label>
-            <input type="text" id="message" name="message" placeholder="Please be nice" />
-            <input type="button"
-                   value="Send message"
-                   onclick="App.analyzer.analyze(); App.room.sendMessage(document.getElementById('message').value);"/>
-        </form>
+            <form class="mui-form">
+                <div class="mui-textfield">
+                    <label for="message">Your message:</label>
+                    <input type="textarea" id="message" name="message" placeholder="Please be nice"/>
+                </div>
 
-        <script src="js/functions.js"></script>
-        <script src="js/requester.js"></script>
-        <script src="js/analyzer.js"></script>
-        <script src="js/application.js"></script>
-        <script src="js/createRoom.js"></script>
-        <script src="js/listeners.js"></script>
-    </body>
+                <input type="button" value="Send message"
+                       onclick="App.analyzer.analyze(); App.room.sendMessage(document.getElementById('message').value);"
+                       class="mui-btn mui-btn--primary"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/functions.js"></script>
+<script src="js/requester.js"></script>
+<script src="js/analyzer.js"></script>
+<script src="js/application.js"></script>
+<script src="js/createRoom.js"></script>
+<script src="js/listeners.js"></script>
+</body>
 </html>

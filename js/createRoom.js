@@ -19,7 +19,7 @@ App.room = App.cable.subscriptions.create({channel: 'ChatRoomChannel', room_id: 
         var parent = document.getElementById('messages');
         var newChild = '<p>' + data.sender + ' says: ' + data.message + '</p>';
         parent.insertAdjacentHTML('beforeend', newChild);
-        this.notifyMe(data.message);
+        //this.notifyMe(data.message);
     },
 
     sendMessage: function (message) {
