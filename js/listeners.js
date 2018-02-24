@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var input = document.getElementById('message');
     input.addEventListener('keydown', function () {
-        if (input.value.length >= 10) {
+        /*if (input.value.length >= 10) {
             var params = {analysis: {resource: input.value, category: 'text'}};
             var request = new XMLHttpRequest();
             request.open("POST", "https://ca-image-analyzer.herokuapp.com/api/analyses", true);
@@ -17,6 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('no can do!')
                 }
             });
-        }
+        }*/
     });
 }, false);
