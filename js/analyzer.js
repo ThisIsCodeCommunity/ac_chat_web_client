@@ -9,11 +9,10 @@ Analyzer.prototype.analyze = function() {
 
         var parent = document.getElementById('messages');
         var newChild = '<div class="alert-box">' + 
-            '<p>Please consider using a more pleasant linguistics<p>'
+            'Please consider using a more pleasant linguistics'
         '</div>';
         if (messageData.results.value === 'Adult') {
             parent.insertAdjacentHTML('beforeend', newChild);
-            //alert('Please consider using a more pleasant linguistics');
             return false;
         }
         return true;
