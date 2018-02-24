@@ -23,11 +23,19 @@ App.room = App.cable.subscriptions.create({channel: 'ChatRoomChannel', room_id: 
     },
 
     sendMessage: function (message) {
-        //App.room.send({message: {content: message}})
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", sendMessageUrl, true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify({message: {content: message}}));
+        var sendMessageUrl = 'https://cnc-chat.herokuapp.com/chat_rooms/1/messages';
+        var params = {
+            message: {
+                sender: 'Vilberg',
+                body: message
+            }
+        };
+
+        App.requester.post(sendMessageUrl, params, function(response) {
+            if (response.status !== 200) {
+                console.log(response.responseText);
+            }
+        });
     },
 
     notifyMe: function (text) {
