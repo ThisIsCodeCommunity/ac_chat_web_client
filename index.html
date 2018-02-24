@@ -24,11 +24,12 @@
 
             <form class="mui-form">
                 <div class="mui-textfield">
-                    <input type="textarea" id="message" name="message" placeholder="Your message"/>
+                    <label for="message">Your message:</label>
+                    <input type="textarea" id="message" name="message" placeholder="Please be nice"/>
                 </div>
 
                 <input type="button" value="Send message"
-                       onclick="App.room.sendMessage(document.getElementById('message').value);"
+                       onclick="App.analyzer.analyze(); App.room.sendMessage(document.getElementById('message').value);"
                        class="mui-btn mui-btn--primary"/>
             </form>
         </div>
@@ -37,11 +38,10 @@
 
 
 <script src="js/functions.js"></script>
+<script src="js/requester.js"></script>
+<script src="js/analyzer.js"></script>
 <script src="js/application.js"></script>
 <script src="js/createRoom.js"></script>
 <script src="js/listeners.js"></script>
 </body>
 </html>
-
-
-
