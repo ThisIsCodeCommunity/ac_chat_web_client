@@ -6,6 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script src="https://unpkg.com/actioncable@5.1.4/lib/assets/compiled/action_cable.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/muicss/0.9.36/css/mui.css"/>
+    <link rel="stylesheet" href="css/form.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 
 <body>
@@ -20,16 +22,29 @@
 <div class="mui-container-fluid">
     <div class="mui-row">
         <div class="mui-col-md-8 mui-col-md-offset-2">
-            <div id="output"></div>
+            <div id="messages"></div>
 
-            <form class="mui-form">
+            <form class="mui-form" id="message-form">
                 <div class="mui-textfield">
                     <label for="message">Your message:</label>
-                    <input type="textarea" id="message" name="message" placeholder="Please be nice"/>
+                    <input type="text" id="message" name="message" placeholder="Please be nice"/>
                 </div>
 
                 <input type="button" value="Send message"
-                       onclick="App.analyzer.analyze(); App.room.sendMessage(document.getElementById('message').value);"
+                       onclick="App.analyzer.analyze(document.getElementById('message').value);
+                       App.room.sendMessage(document.getElementById('message').value);"
+                       class="mui-btn mui-btn--primary"/>
+            </form>
+
+            <form class="mui-form" id="nickname-form">
+                <div class="mui-textfield">
+                    <label for="message">Your nickname:</label>
+                    <input type="text" id="nickname" name="nickname" placeholder="Please be responsible"/>
+                </div>
+
+                <input type="button" value="Send"
+                       onclick="App.analyzer.analyze(document.getElementById('nickname').value);
+                       App.setNickname(document.getElementById('nickname').value);"
                        class="mui-btn mui-btn--primary"/>
             </form>
         </div>
@@ -38,6 +53,7 @@
 
 
 <script src="js/functions.js"></script>
+<script src="js/cookies.js"></script>
 <script src="js/requester.js"></script>
 <script src="js/analyzer.js"></script>
 <script src="js/application.js"></script>
