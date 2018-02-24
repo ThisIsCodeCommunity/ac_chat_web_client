@@ -23,7 +23,7 @@ App.room = App.cable.subscriptions.create({channel: 'ChatRoomChannel', room_id: 
     },
 
     sendMessage: function (message) {
-        var sendMessageUrl = 'https://cnc-chat.herokuapp.com/chat_rooms/1/messages'
+        var sendMessageUrl = 'https://cnc-chat.herokuapp.com/chat_rooms/1/messages';
         var params = {
             message: {
                 sender: 'Vilberg',
