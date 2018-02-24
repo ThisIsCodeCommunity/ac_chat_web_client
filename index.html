@@ -32,7 +32,8 @@
 
                 <input type="button" value="Send message"
                        onclick="App.analyzer.analyze(document.getElementById('message').value);
-                       App.room.sendMessage(document.getElementById('message').value);"
+                       App.room.sendMessage(document.getElementById('message').value);
+                       document.getElementById('message').value = ''"
                        class="mui-btn mui-btn--primary"/>
             </form>
 
