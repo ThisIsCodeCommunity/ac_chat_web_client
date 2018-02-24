@@ -7,11 +7,11 @@ Analyzer.prototype.analyze = function() {
     var callback = function (request) {
         var messageData = JSON.parse(request.responseText);
         if (messageData.results.value === 'Adult') {
-            console.log('no can do!');
+            alert('Please consider using a more pleasant linguistics');
             return false;
         }
         return true;
     };
 
-    App.requester.post(analyzeUrl, params, callback);
+    var request = App.requester.post(analyzeUrl, params, callback);
 };
