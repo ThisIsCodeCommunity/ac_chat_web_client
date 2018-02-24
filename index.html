@@ -5,7 +5,6 @@
         <title>WebSocket Test</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
         <script src="https://unpkg.com/actioncable@5.1.4/lib/assets/compiled/action_cable.js"></script>
-        
     </head>
 
     <body>
@@ -14,16 +13,18 @@
         <div id="output"></div>
 
         <form>
-            Your message: <input type="textarea" id="message" name="message"/>
-            <input type="button" value="Send message"
-                onclick="App.room.sendMessage(document.getElementById('message').value);"/>
+            <label for="message">Your message:</label>
+            <input type="text" id="message" name="message" placeholder="Please be nice" />
+            <input type="button"
+                   value="Send message"
+                   onclick="App.analyzer.analyze(); App.room.sendMessage(document.getElementById('message').value);"/>
         </form>
+
         <script src="js/functions.js"></script>
+        <script src="js/requester.js"></script>
+        <script src="js/analyzer.js"></script>
         <script src="js/application.js"></script>
         <script src="js/createRoom.js"></script>
         <script src="js/listeners.js"></script>
     </body>
 </html>
-
-
-
