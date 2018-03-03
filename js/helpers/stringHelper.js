@@ -1,4 +1,6 @@
-function strip(str) {
+function StringHelper () {}
+
+StringHelper.prototype.strip = function (str) {
     // Remove some tags
     str = str.replace(/<[^>]+>/gim, '');
 
@@ -13,4 +15,4 @@ function strip(str) {
     input.value = div.textContent || div.innerText || '';
 
     return input.value.trim();
-}
+};

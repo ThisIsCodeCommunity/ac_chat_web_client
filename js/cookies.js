@@ -1,4 +1,6 @@
-function setCookie(name, value) {
+function Cookies() {}
+
+Cookies.prototype.set = function (name, value) {
     var days = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 7;
     var path = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '/';
 
@@ -7,9 +9,9 @@ function setCookie(name, value) {
         document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=' + path;
         resolve();
     });
-}
+};
 
-function getCookie(name) {
+Cookies.prototype.get = function (name) {
     return new Promise(function (resolve) {
         var value = document.cookie.split('; ').reduce(function (r, v) {
             var parts = v.split('=');
@@ -17,4 +19,4 @@ function getCookie(name) {
         }, '');
         resolve(value);
     })
-}
+};
