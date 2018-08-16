@@ -1,0 +1,11 @@
+<form class="mui-form" id="message-form">
+    <div class="mui-textfield">
+        <label for="message">Your message:</label>
+        <input type="text" id="message" name="message" placeholder="Please be nice"/>
+    </div>
+
+    <input type="button" value="Send message"
+           onclick="App.room.sendMessage(document.getElementById('message').value);
+                       document.getElementById('message').value = '';"
+           class="mui-btn mui-btn--primary"/>
+</form>

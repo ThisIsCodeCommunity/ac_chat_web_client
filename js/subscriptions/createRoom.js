@@ -1,17 +1,17 @@
 App.room = App.cable.subscriptions.create({channel: 'ChatRoomChannel', room_id: '1'}, {
     connected: function (data) {
         // Called when the subscription is ready for use on the server
-        console.log('connected')
+        console.log('connected');
     },
 
     disconnected: function () {
         // Called when the subscription has been terminated by the server
-        console.log('disconnected')
+        console.log('disconnected');
     },
 
     received: function (data) {
         // Called when there's incoming data on the websocket for this channel
-        console.log('received message')
+        console.log('received message');
         return this.appendMessage(data);
     },
 
@@ -23,9 +23,10 @@ App.room = App.cable.subscriptions.create({channel: 'ChatRoomChannel', room_id: 
     },
 
     sendMessage: function (message) {
+        App.analyzer.analyze(message);
         var sendMessageUrl = 'https://cnc-chat.herokuapp.com/chat_rooms/1/messages';
 
-        var promise = getCookie('nickname');
+        var promise = App.cookie.get('nickname');
         promise.then(function(nickname) {
             var params = {
                 message: {

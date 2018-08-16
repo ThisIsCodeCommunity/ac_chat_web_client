@@ -8,7 +8,7 @@ Analyzer.prototype.analyze = function(value) {
 
         var parent = document.getElementById('messages');
         var newChild = '<div class="alert-box">' + 
-            'Please consider using a more pleasant linguistics'
+            'Please consider using a more pleasant linguistics' +
         '</div>';
         if (messageData.results.value === 'Adult') {
             parent.insertAdjacentHTML('beforeend', newChild);
@@ -17,5 +17,5 @@ Analyzer.prototype.analyze = function(value) {
         return true;
     };
 
-    var request = App.requester.post(analyzeUrl, params, callback);
+    return App.requester.post(analyzeUrl, params, callback);
 };

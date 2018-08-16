@@ -23,42 +23,20 @@
     <div class="mui-row">
         <div class="mui-col-md-8 mui-col-md-offset-2">
             <div id="messages"></div>
-
-            <form class="mui-form" id="message-form">
-                <div class="mui-textfield">
-                    <label for="message">Your message:</label>
-                    <input type="text" id="message" name="message" placeholder="Please be nice"/>
-                </div>
-
-                <input type="button" value="Send message"
-                       onclick="App.analyzer.analyze(document.getElementById('message').value);
-                       App.room.sendMessage(document.getElementById('message').value);
-                       document.getElementById('message').value = ''"
-                       class="mui-btn mui-btn--primary"/>
-            </form>
-
-            <form class="mui-form" id="nickname-form">
-                <div class="mui-textfield">
-                    <label for="message">Your nickname:</label>
-                    <input type="text" id="nickname" name="nickname" placeholder="Please be responsible"/>
-                </div>
-
-                <input type="button" value="Send"
-                       onclick="App.analyzer.analyze(document.getElementById('nickname').value);
-                       App.setNickname(document.getElementById('nickname').value);"
-                       class="mui-btn mui-btn--primary"/>
-            </form>
+            <div id="message-form-container"></div>
+            <div id="nickname-form-container"></div>
         </div>
     </div>
 </div>
 
-
-<script src="js/functions.js"></script>
-<script src="js/cookies.js"></script>
-<script src="js/requester.js"></script>
-<script src="js/analyzer.js"></script>
-<script src="js/application.js"></script>
-<script src="js/createRoom.js"></script>
-<script src="js/listeners.js"></script>
+<script src="js/config.js"></script>
+<script src="js/helpers/StringHelper.js"></script>
+<script src="js/Cookies.js"></script>
+<script src="js/Requester.js"></script>
+<script src="js/Analyzer.js"></script>
+<script src="js/Form.js"></script>
+<script src="js/Application.js"></script>
+<script src="js/subscriptions/CreateRoom.js"></script>
+<script src="js/listeners/Notification.js"></script>
 </body>
 </html>

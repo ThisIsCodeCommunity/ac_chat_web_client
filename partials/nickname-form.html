@@ -1,0 +1,10 @@
+<form class="mui-form" id="nickname-form">
+    <div class="mui-textfield">
+        <label for="nickname">Your nickname:</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Please be responsible"/>
+    </div>
+
+    <input type="button" value="Send"
+           onclick="App.setNickname(document.getElementById('nickname').value);"
+           class="mui-btn mui-btn--primary"/>
+</form>
