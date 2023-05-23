@@ -1,41 +1,44 @@
-(function () {
-    this.App || (this.App = {});
+{
+    class App {
+        constructor() {
+            this.cable = ActionCable.createConsumer(consumerUrl);
+            console.log(this.cable);
 
-    App.cable = ActionCable.createConsumer(consumerUrl);
-    console.log(App.cable);
+            this.cookie = new Cookies();
+            this.requester = new Requester();
+            this.analyzer = new Analyzer();
+            this.form = new Form();
 
-    App.getNickname = function () {
-        var promise = App.cookie.get('nickname');
-        promise.then(function (result) {
+            this.loadPartials();
+        }
+
+        async loadPartials() {
+            const result = await this.form.loadPartials();
+            this.getNickname();
+        }
+
+        async getNickname() {
+            const result = await this.cookie.get('nickname');
             if (result !== '') {
                 document.getElementById('message').setAttribute('placeholder', 'Please be nice, ' + result);
                 document.getElementById('message-form').style.display = 'block';
             } else {
                 document.getElementById('nickname-form').style.display = 'block';
             }
-        });
-    };
+        }
 
-    App.setNickname = function (value) {
-        var promise = App.analyzer.analyze(value);
-        promise.then(function (result) {
-            var messageData = JSON.parse(result.responseText);
+        async setNickname(value) {
+            const result = await this.analyzer.analyze(value);
+            const messageData = JSON.parse(result.responseText);
             if (messageData.results.value !== 'Adult') {
-                App.cookie.set('nickname', value);
+                this.cookie.set('nickname', value);
                 document.getElementById('message').setAttribute('placeholder', 'Please be nice, ' + value);
                 document.getElementById('message-form').style.display = 'block';
                 document.getElementById('nickname-form').style.display = 'none';
             }
-        });
-    };
+        }
+    }
 
-    App.cookie = new Cookies();
-    App.requester = new Requester();
-    App.analyzer = new Analyzer();
-    App.form = new Form();
-
-    var resultPromise = App.form.loadPartials();
-    resultPromise.then(function (result) {
-        App.getNickname();
-    });
-}).call(this);
+    // Create an instance of App
+    const app = new App();
+}
